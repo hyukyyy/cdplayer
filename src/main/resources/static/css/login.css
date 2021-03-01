@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: gray;
+}
+
+.signin-input {
+    display: block;
+    border-radius: 5px;
+}
+
+.signin-form {
+    text-align: center;
+    margin-top: 150px;
+}
+
+.login {
+    margin-top: 50px;
+}
+
+.info {
+    width: 50%;
+    height: 50px;
+}
+
+form {
+    margin-top: 50px;
+}

@@ -1,0 +1,12 @@
+html, body, .main {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}
+
+.gcalendar {
+    display: block;
+    border: None;
+    height: 100vh;
+    width: 100vw;
+}

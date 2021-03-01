@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/history.css" th:href="@{css/history.css}">
+    <title>History</title>
+</head>
+
+<body>
+    <!-- 네비게이션바 -->
+    <div th:replace="fragment/common :: nav"></div>
+
+    <!-- 타임라인 -->
+    <section class="timeline">
+        <ol>
+            <li th:each="history : ${histories}">
+                <div class="view" onclick="showDetail(this)">
+                    <time th:text="${history.date}"></time>
+                    <h5 th:text="${history.title}"></h5>
+                    <p th:text="${history.content}"></p>
+                    <img class="hide history-img" th:src="@{${history.photo}}" width="150px" height="150px">
+                </div>
+            </li>
+        </ol>
+
+        <div class="arrows">
+            <button class="arrow arrow__prev disabled" disabled>
+              <img th:src="@{/img/prev.svg}" alt="prev timeline arrow">
+            </button>
+            <button class="arrow arrow__play">
+                <img th:src="@{/img/play.svg}" alt="prev timeline arrow">
+              </button>
+            <button class="arrow arrow__next">
+              <img th:src="@{/img/next.svg}" alt="next timeline arrow">
+            </button>
+            <a th:href="@{/history/form}">
+                <img th:src="@{/img/add.png}" alt="add history">
+            </a>
+        </div>
+    </section>
+
+    <script src="js/history.js" th:src="@{js/history.js}"></script>
+
+</body>
+
+</html>

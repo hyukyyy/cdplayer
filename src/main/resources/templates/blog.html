@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/css/blog.css}">
+    <title>Blog</title>
+</head>
+
+<body>
+
+    <div th:replace="fragment/common :: nav"></div>
+
+    <main class="container-fluid">
+
+        <form th:action="@{/blog/form}">
+            <div class="board">
+
+                <ul class="content-lists">
+                    <li th:each="board : ${boards}" class="content-list">
+                        <div class="content" onclick="dp_board(this)">
+                            <input type="radio" th:name="id" id="id" th:value="${board.id}">
+                            <p class="content-title" th:text="${board.title}"></p>
+                        </div>
+                        <div class="inner-content" th:text="${board.content}"></div>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+
+            <div class="btn-group text-end">
+                <a href="/blog/form" class="btn btn-dark">쓰기</a>
+                <input class="btn btn-dark" type="submit" formaction="/blog/form" value="수정"></input>
+                <input class="btn btn-dark" type="submit" formaction="/blog/delete" value="삭제"></input>
+            </div>
+        </form>
+
+    </main>
+
+    <script th:src="@{/js/blog.js}"></script>
+</body>
+
+</html>
